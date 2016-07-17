@@ -3,6 +3,7 @@ title: "Reproducible Research: Peer Assessment 1"
 output: 
   html_document:
     keep_md: true
+
 ---
 
 ### Introduction
@@ -26,25 +27,27 @@ The variables included in this dataset are:
 
 
 ###Loading and preprocessing the data
-```{r,message=F, warning=F}
-library(dplyr)
-
+```{r}
+unzip("activity.zip")
 read.csv("activity.csv")-> activity
 transform(activity,date = as.Date(date)) -> activity
 ```
 
 ###What is mean total number of steps taken per day?
 1. Calculate total number of steps per day and make histogram
-```{r}
+```{r,message=F, warning=F}
+library(dplyr)
 activity%>%group_by(date)%>%summarize(total_steps = sum(steps)) -> sum_steps_per_day
 hist(sum_steps_per_day$total_steps,breaks=20,xlab="total steps per day",main="Histogram: total steps per day")
 ```
 
 2. Mean and median of total number of steps per day
 ```{r}
-mean(sum_steps_per_day$total_steps,na.rm=TRUE)
-median(sum_steps_per_day$total_steps,na.rm=TRUE)
+mean.steps <- round(mean(sum_steps_per_day$total_steps,na.rm=TRUE),2)
+median.steps <- round(median(sum_steps_per_day$total_steps,na.rm=TRUE),2)
 ```
+Mean total steps is `r options(scipen=999999);mean.steps`;
+Median total steps is `r options(scipen=999999);median.steps`
 
 ###What is the average daily activity pattern?
 1. Time series plot of the 5-minute interval and the average number of steps taken, averaged across all days
@@ -55,14 +58,16 @@ with(mean_steps_per_interval,plot(interval,average_steps,type="l",ylab="Average 
 
 2. Which time interval has the max number of steps?
 ```{r}
-which.max(mean_steps_per_interval$average_steps)
+max_interval <- mean_steps_per_interval$interval[which.max(mean_steps_per_interval$average_steps)]
 ```
+Interval `r max_interval` has the max number of steps.
 
 ###Imputing missing values
 1. Number of missing values
 ```{r}
-length(activity$steps[is.na(activity$steps)])
+number.na<-length(activity$steps[is.na(activity$steps)])
 ```
+There are `r number.na` missing values in the data.
 
 2. Inpute missing values
 
@@ -86,9 +91,11 @@ hist(sum_steps_per_day_fixed$total_steps,breaks=20,xlab="total steps per day",ma
 
 4. Mean and median of total number of steps per day
 ```{r}
-mean(sum_steps_per_day_fixed$total_steps)
-median(sum_steps_per_day_fixed$total_steps)
+mean.steps <- mean(sum_steps_per_day_fixed$total_steps)
+median.steps <- median(sum_steps_per_day_fixed$total_steps)
 ```
+Mean total steps is `r options(scipen=999999);mean.steps`;
+Median total steps is `r options(scipen=999999);median.steps`
 
 ###Are there differences in activity patterns between weekdays and weekends?
 1. Label the data by weekday/weekend
