@@ -143,10 +143,10 @@ hist(sum_steps_per_day$total_steps,breaks=20,xlab=&quot;total steps per day&quot
 <ol start="2" style="list-style-type: decimal">
 <li>Mean and median of total number of steps per day</li>
 </ol>
-<pre class="r"><code>mean(activity$steps,na.rm=TRUE)</code></pre>
-<pre><code>## [1] 37.3826</code></pre>
-<pre class="r"><code>median(activity$steps,na.rm=TRUE)</code></pre>
-<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>mean(sum_steps_per_day$total_steps,na.rm=TRUE)</code></pre>
+<pre><code>## [1] 10766.19</code></pre>
+<pre class="r"><code>median(sum_steps_per_day$total_steps,na.rm=TRUE)</code></pre>
+<pre><code>## [1] 10765</code></pre>
 </div>
 <div id="what-is-the-average-daily-activity-pattern" class="section level3">
 <h3>What is the average daily activity pattern?</h3>
@@ -190,10 +190,10 @@ hist(sum_steps_per_day_fixed$total_steps,breaks=20,xlab=&quot;total steps per da
 <ol start="4" style="list-style-type: decimal">
 <li>Mean and median of total number of steps per day</li>
 </ol>
-<pre class="r"><code>mean(activity_fixed$steps)</code></pre>
-<pre><code>## [1] 37.3826</code></pre>
-<pre class="r"><code>median(activity_fixed$steps)</code></pre>
-<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>mean(sum_steps_per_day_fixed$total_steps)</code></pre>
+<pre><code>## [1] 10766.19</code></pre>
+<pre class="r"><code>median(sum_steps_per_day_fixed$total_steps)</code></pre>
+<pre><code>## [1] 10766.19</code></pre>
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level3">
 <h3>Are there differences in activity patterns between weekdays and weekends?</h3>

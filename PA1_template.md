@@ -42,19 +42,19 @@ hist(sum_steps_per_day$total_steps,breaks=20,xlab="total steps per day",main="Hi
 2. Mean and median of total number of steps per day
 
 ```r
-mean(activity$steps,na.rm=TRUE)
+mean(sum_steps_per_day$total_steps,na.rm=TRUE)
 ```
 
 ```
-## [1] 37.3826
+## [1] 10766.19
 ```
 
 ```r
-median(activity$steps,na.rm=TRUE)
+median(sum_steps_per_day$total_steps,na.rm=TRUE)
 ```
 
 ```
-## [1] 0
+## [1] 10765
 ```
 
 ###What is the average daily activity pattern?
@@ -115,19 +115,19 @@ hist(sum_steps_per_day_fixed$total_steps,breaks=20,xlab="total steps per day",ma
 4. Mean and median of total number of steps per day
 
 ```r
-mean(activity_fixed$steps)
+mean(sum_steps_per_day_fixed$total_steps)
 ```
 
 ```
-## [1] 37.3826
+## [1] 10766.19
 ```
 
 ```r
-median(activity_fixed$steps)
+median(sum_steps_per_day_fixed$total_steps)
 ```
 
 ```
-## [1] 0
+## [1] 10766.19
 ```
 
 ###Are there differences in activity patterns between weekdays and weekends?
